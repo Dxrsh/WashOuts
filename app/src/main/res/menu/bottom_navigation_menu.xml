@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Profile"
+        android:icon="@drawable/profile"
+        android:id="@+id/profile_menu"
+        android:iconTint="@color/main"/>
+    <item
+        android:title="Wash"
+        android:icon="@drawable/wash"
+        android:id="@+id/wash_menu"
+        android:iconTint="@color/main"/>
+    <item
+        android:title="Orders"
+        android:icon="@drawable/order"
+        android:id="@+id/order_menu"
+        android:iconTint="@color/main"/>
+
+</menu>
