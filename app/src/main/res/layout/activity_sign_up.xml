@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="152dp"
+        android:layout_height="48dp"
+        android:text="First Name:"
+        android:textColor="@color/main"
+        android:textSize="24sp"
+        android:layout_below="@id/textView4"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"/>
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="firstname"
+        android:inputType="text"
+        android:layout_below="@id/textView2"
+        android:layout_marginStart="30dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:text="Last Name:"
+        android:textColor="@color/main"
+        android:textSize="24sp"
+        android:layout_below="@id/firstName"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"/>
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="lastname"
+        android:inputType="text"
+        android:layout_below="@id/textView3"
+        android:layout_marginStart="30dp"/>
+
+    <Button
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main"
+        android:text="Next"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your Details"
+        android:textColor="@color/main"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+</RelativeLayout>
