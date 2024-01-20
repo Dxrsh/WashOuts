@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "771379092660",
+    "project_id": "washouts",
+    "storage_bucket": "washouts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771379092660:android:f288764783b9f8b8c60be1",
+        "android_client_info": {
+          "package_name": "com.example.washouts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEOfBlUqK2dAybdhko-9jWgmDAzcerm7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
