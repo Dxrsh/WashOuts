@@ -1,64 +1,110 @@
 package com.example.washouts;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OrderFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.washouts.firebase.FireBase;
+import com.example.washouts.models.OrderModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class OrderFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public OrderFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OrderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance(String param1, String param2) {
-        OrderFragment fragment = new OrderFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    ListView listView;
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        listView = view.findViewById(R.id.orderList);
+        progressBar = view.findViewById(R.id.load);
+
+
+        getOrders();
+        return view;
+    }
+
+    private void getOrders() {
+        FireBase.getUsersOrders().get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            progressBar.setVisibility(View.GONE);
+                            List<OrderModel> data = new ArrayList<>();
+                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                OrderModel orderModel = documentSnapshot.toObject(OrderModel.class);
+                                data.add(orderModel);
+                            }
+
+                            AdapterClass adapterClass = new AdapterClass(getContext(),data);
+
+                            listView.setAdapter(adapterClass);
+                        } else {
+                            Toast.makeText(getActivity(), "Error"+task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    public static class AdapterClass extends ArrayAdapter<OrderModel> {
+
+        public AdapterClass(@NonNull Context context, List<OrderModel> data) {
+            super(context, R.layout.list_layout, data);
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            if (convertView==null) {
+                convertView = LayoutInflater.from(getContext()).inflate(
+                        R.layout.list_layout,parent,false);
+            }
+
+            TextView address = convertView.findViewById(R.id.displayAddTVO);
+            TextView date = convertView.findViewById(R.id.displayDateTVO);
+            TextView time = convertView.findViewById(R.id.displayTimeTVO);
+            TextView service = convertView.findViewById(R.id.displayServiceTVO);
+            TextView garments = convertView.findViewById(R.id.displayGarmentsTVO);
+            TextView payment = convertView.findViewById(R.id.paymentTV);
+            TextView mPayment = convertView.findViewById(R.id.modeOfPaymentTV);
+
+            OrderModel currentOrderModel = getItem(position);
+
+            if (currentOrderModel!=null) {
+                address.setText(currentOrderModel.getFullAddress());
+                date.setText(currentOrderModel.getPickUpDate());
+                time.setText(currentOrderModel.getPickUpTime());
+                service.setText(currentOrderModel.getServiceType());
+                garments.setText(currentOrderModel.getNoOfGarments());
+                payment.setText("Rs. "+currentOrderModel.getPayment());
+                mPayment.setText("("+currentOrderModel.getModeOfPayment()+")");
+            }
+
+            return convertView;
+        }
     }
 }

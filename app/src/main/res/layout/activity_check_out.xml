@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckOutActivity"
+    android:background="@drawable/rounded_corner_blac">
+
+    <TextView
+        android:id="@+id/confirmOrderTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Order"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/main"/>
+
+    <TextView
+        android:id="@+id/addTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address :"
+        android:layout_below="@+id/confirmOrderTV"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/displayAddTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/addTV"
+        android:layout_below="@id/confirmOrderTV"/>
+
+    <TextView
+        android:id="@+id/dateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayAddTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="On :"/>
+    <TextView
+        android:id="@+id/displayDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/dateTV"
+        android:layout_below="@id/displayAddTV"/>
+
+    <TextView
+        android:id="@+id/timeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayDateTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="At :"/>
+    <TextView
+        android:id="@+id/displayTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/timeTV"
+        android:layout_below="@id/displayDateTV"/>
+
+    <TextView
+        android:id="@+id/typeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayTimeTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Service :"/>
+    <TextView
+        android:id="@+id/displayServiceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/typeTV"
+        android:layout_below="@id/displayTimeTV"/>
+
+    <TextView
+        android:id="@+id/garmentsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayServiceTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Number Of Garments :"/>
+    <TextView
+        android:id="@+id/displaygarmentsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/garmentsTV"
+        android:layout_below="@id/displayServiceTV"/>
+
+    <TextView
+        android:id="@+id/amountTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displaygarmentsTV"
+        android:layout_centerHorizontal="true"
+        android:text="Payable Amount : "
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Rs."
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/amountTV"
+        android:layout_below="@id/garmentsTV"/>
+
+    <TextView
+        android:id="@+id/paymentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amountTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Select Mode of Payment :" />
+    <RadioGroup
+        android:id="@+id/modeOfPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/paymentTV"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/cod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Cash On Delivery"/>
+        <RadioButton
+            android:id="@+id/online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Online/UPI" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/confirmOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main"
+        android:layout_below="@id/modeOfPayment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Confirm"/>
+</RelativeLayout>
