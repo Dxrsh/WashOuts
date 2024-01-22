@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.WashOuts" parent="Base.Theme.WashOuts" />
+
+    <style name="Theme.WashOuts.PopUp" >
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+    </style>
 </resources>
