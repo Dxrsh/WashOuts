@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="profile" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="67dp"
+        android:layout_height="63dp"
+        android:src="@drawable/profile"
+        android:layout_margin="30dp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="34sp"
+        android:layout_toRightOf="@id/imageView3"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fullname"
+        android:layout_toRightOf="@id/imageView3"
+        android:layout_marginTop="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="613dp"
+        android:orientation="vertical"
+        android:layout_below="@id/imageView3">
+
+        <TextView
+            android:id="@+id/feedbackview"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="40dp"
+            android:paddingTop="13dp"
+            android:text="Send Feedback"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/helpview"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="40dp"
+            android:paddingTop="13dp"
+            android:text="Help Centre"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/logoutview"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="40dp"
+            android:paddingTop="13dp"
+            android:text="Log Out"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

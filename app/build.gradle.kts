@@ -42,4 +42,5 @@ dependencies {
 
     implementation("com.hbb20:ccp:2.7.3")
     implementation("com.google.android.libraries.places:places:3.3.0")
+    implementation("com.razorpay:checkout:1.5.16")
 }
