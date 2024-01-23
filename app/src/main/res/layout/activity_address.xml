@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddressActivity"
+    android:background="@drawable/rounded_corner_blac">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HouseNo/StreetNo/Locality"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Landmark (If Any)"
+        android:layout_below="@id/houseText"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/landmarkText"
+        android:layout_width="283dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_below="@id/textView11"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/houseText"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/textView10"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main"
+        android:text="Save"
+        android:layout_below="@id/landmarkText"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

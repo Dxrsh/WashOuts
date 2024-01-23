@@ -41,4 +41,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.hbb20:ccp:2.7.3")
+    implementation("com.google.android.libraries.places:places:3.3.0")
 }

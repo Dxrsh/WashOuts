@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,23 +16,34 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.WashOuts"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB43aMtCgTV8SYntDaTe08Wdgdcv_8PNfg" />
+
+        <activity
+            android:name=".AddressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WashOuts.PopUp"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".CheckOutActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:theme="@style/Theme.WashOuts.PopUp"/>
+            android:theme="@style/Theme.WashOuts.PopUp"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SavedAddressActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:theme="@style/Theme.WashOuts.PopUp"/>
+            android:theme="@style/Theme.WashOuts.PopUp"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MapActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false"
