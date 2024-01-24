@@ -51,7 +51,7 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
         helpView = view.findViewById(R.id.helpview);
         outView = view.findViewById(R.id.logoutview);
 //        pay = view.findViewById(R.id.pay);
-
+//
 //        pay.setOnClickListener(v -> {
 //            payNow("1");
 //            Intent intent = new Intent(getActivity(),PaymentActivity.class);
