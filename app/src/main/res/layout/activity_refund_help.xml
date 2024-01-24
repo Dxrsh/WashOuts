@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".help.RefundHelpActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
+
+        <TextView
+            android:id="@+id/helpHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Returns &amp; Refunds"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="7dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/helpText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u2022 Refund will only be applicable if there's any damage to your clothes after the laundry"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/red"
+            android:layout_below="@id/helpHeading"/>
+        <TextView
+            android:id="@+id/helpText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Also if you have Paid Online and Cancelled the Order"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/red"
+            android:layout_below="@id/helpText1"/>
+        <TextView
+            android:id="@+id/helpText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u2022 You will get your Refund in within 24Hours of the Order"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/red"
+            android:layout_below="@id/helpText2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If Any Query Contact Us At"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="washouts2024@hotmail.com"
+                android:textColor="@color/linkColor"
+                android:clickable="true"
+                android:focusable="true"
+                android:autoLink="email" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

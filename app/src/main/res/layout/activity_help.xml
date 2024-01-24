@@ -30,6 +30,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/orderHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
@@ -50,6 +51,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/orderListHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
@@ -70,6 +72,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/refundHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
@@ -85,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Returns  Refunds"
+                android:text="Returns &amp; Refunds"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

@@ -3,6 +3,7 @@
     <style name="Base.Theme.WashOuts" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:screenOrientation">portrait</item>
     </style>
 
     <style name="Theme.WashOuts" parent="Base.Theme.WashOuts" />

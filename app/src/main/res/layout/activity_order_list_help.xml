@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".help.OrderListHelpActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/helpHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How to see your current or past orders?"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="7dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/helpText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u2022 Click the Orders Icon"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_below="@id/helpHeading"/>
+
+        <ImageView
+            android:id="@+id/helpImage1"
+            android:layout_width="350dp"
+            android:layout_height="130dp"
+            android:src="@drawable/help3"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/helpText1"/>
+
+        <TextView
+            android:id="@+id/helpText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u2022 See the List of all the Orders, You can remove a Order on clicking the Remove Button"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_below="@id/helpImage1"/>
+
+        <ImageView
+            android:id="@+id/helpImage2"
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            android:src="@drawable/help4"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/helpText2"/>
+
+    </RelativeLayout>
+
+</ScrollView>

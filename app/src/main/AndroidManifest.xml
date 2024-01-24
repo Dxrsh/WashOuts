@@ -17,11 +17,24 @@
         android:theme="@style/Base.Theme.WashOuts"
         tools:targetApi="31">
         <activity
+            android:name=".help.RefundHelpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WashOuts.PopUp"/>
+        <activity
+            android:name=".help.OrderListHelpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WashOuts.PopUp"/>
+        <activity
+            android:name=".help.OrderHelpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WashOuts.PopUp"/>
+        <activity
             android:name=".HelpActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".FeedbackActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.WashOuts.PopUp"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -38,56 +51,36 @@
         <activity
             android:name=".AddressActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.WashOuts.PopUp"
-            tools:ignore="LockedOrientationActivity" />
+            android:theme="@style/Theme.WashOuts.PopUp" />
         <activity
             android:name=".CheckOutActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.WashOuts.PopUp"
-            tools:ignore="LockedOrientationActivity" />
+            android:theme="@style/Theme.WashOuts.PopUp"/>
         <activity
             android:name=".SavedAddressActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.WashOuts.PopUp"
-            tools:ignore="LockedOrientationActivity" />
+            android:theme="@style/Theme.WashOuts.PopUp" />
         <activity
             android:name=".MapActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false"/>
         <activity
             android:name=".SignUpActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false"/>
         <activity
             android:name=".HomeActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false" />
         <activity
             android:name=".LoadActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false" />
         <activity
             android:name=".OTPActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false"/>
         <activity
             android:name=".LoginActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
