@@ -27,4 +27,8 @@ public class FireBase {
         return FirebaseFirestore.getInstance().collection("users")
                 .document(getCurrentUserId()).collection("orders");
     }
+
+    public static CollectionReference getFeedbacks() {
+        return FirebaseFirestore.getInstance().collection("feedbacks");
+    }
 }

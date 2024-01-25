@@ -35,7 +35,6 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     TextView name,phone,feedbackView,helpView,outView;
     UserModel userModel;
-    Button pay;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +45,7 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
         name = view.findViewById(R.id.fullname);
         phone = view.findViewById(R.id.number);
         getData();
+
 
         feedbackView = view.findViewById(R.id.feedbackview);
         helpView = view.findViewById(R.id.helpview);
@@ -59,8 +59,13 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
 //        });
 
         feedbackView.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), FeedbackActivity.class);
-            getActivity().startActivity(intent);
+            if (HomeActivity.isAdmin) {
+                Intent intent = new Intent(getActivity(), AllFeedbackActivity.class);
+                getActivity().startActivity(intent);
+            } else {
+                Intent intent = new Intent(getActivity(), FeedbackActivity.class);
+                getActivity().startActivity(intent);
+            }
         });
         helpView.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HelpActivity.class);
@@ -124,12 +129,10 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(getActivity(), "Pay S", Toast.LENGTH_SHORT).show();
-        pay.setText(s);
     }
 
     @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(getActivity(), "Pay F", Toast.LENGTH_SHORT).show();
-        pay.setText(s);
     }
 }
