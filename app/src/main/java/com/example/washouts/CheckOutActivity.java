@@ -1,7 +1,9 @@
 package com.example.washouts;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,17 +15,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.OrderModel;
+import com.example.washouts.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
-public class CheckOutActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class CheckOutActivity extends AppCompatActivity implements PaymentResultListener {
 
     OrderModel orderModel;
-    String userId,orderId,fullName,address,date,time,service,garments,mOPayment="";
-    TextView addressTV,dateTV,timeTV,serviceTV,garmentsTV;
+    String userId,orderId,fullName,address,date,time,service,garments,mOPayment="",payment="";
+    TextView addressTV,dateTV,timeTV,serviceTV,garmentsTV,amountTV;
     RadioGroup modeOfPayment;
     Button confirm;
+    UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,14 @@ public class CheckOutActivity extends AppCompatActivity {
         garmentsTV = findViewById(R.id.displaygarmentsTV);
         modeOfPayment = findViewById(R.id.modeOfPayment);
         confirm = findViewById(R.id.confirmOrderButton);
+        amountTV = findViewById(R.id.amount);
+
+        FireBase.getCurrentUserDetails().get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                userModel = documentSnapshot.toObject(UserModel.class);
+            }
+        });
 
         addressTV.setText(address);
         dateTV.setText(date);
@@ -76,20 +94,65 @@ public class CheckOutActivity extends AppCompatActivity {
             if(mOPayment.isEmpty()) {
                 Toast.makeText(this, "Please select mode of payment!", Toast.LENGTH_SHORT).show();
             } else {
+                calculatePayment();
                 switch (mOPayment) {
                     case "cod":
                         placeOrder();
                         break;
                     case "online":
-                        placeOrder();
+                        payOnline(payment);
                         break;
                 }
             }
         });
     }
 
+    private void payOnline(String payment) {
+        final Activity activity = this;
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_9V30Iow9nxYTdn");
+        checkout.setImage(R.drawable.ic_launcher_background);
+
+        double finalAmount = Float.parseFloat(payment)*100;
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name",fullName);
+            options.put("image","https://s3.amazonaws.com./rzp-mobile/images/rzp.png");
+            options.put("theme.color",R.color.main);
+            options.put("currency","INR");
+            options.put("amount",finalAmount+"");
+            options.put("prefill.contact",userModel.getPhoneNumber());
+
+            checkout.open(activity,options);
+        } catch (JSONException e) {
+            Log.e("Tag","Error",e);
+        }
+    }
+
+    private void calculatePayment() {
+        Float amount;
+        switch (service) {
+            case "Steam Press Only":
+                amount = Float.parseFloat(garments) * 30;
+                payment = String.valueOf(amount);
+                amountTV.setText("Rs." + payment);
+                break;
+            case "Dry Cleaning & Steam Press":
+                amount = Float.parseFloat(garments) * 50;
+                payment = String.valueOf(amount);
+                amountTV.setText("Rs." + payment);
+                break;
+            case "Wash Cleaning & Steam Press":
+                amount = Float.parseFloat(garments) * 80;
+                payment = String.valueOf(amount);
+                amountTV.setText("Rs." + payment);
+                break;
+        }
+    }
+
     public void placeOrder() {
-        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,"100",mOPayment);
+        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,payment,mOPayment);
         FireBase.getUsersOrders().add(orderModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -112,5 +175,15 @@ public class CheckOutActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+        Toast.makeText(getApplicationContext(), "Payment Successful", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
     }
 }

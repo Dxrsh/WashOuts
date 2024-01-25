@@ -48,8 +48,7 @@ public class SavedAddressActivity extends AppCompatActivity {
             startActivity(intent);
         });
         ok.setOnClickListener(v -> {
-            Intent intent = new Intent(SavedAddressActivity.this, HomeActivity.class);
-            startActivity(intent);
+            finish();
         });
     }
 

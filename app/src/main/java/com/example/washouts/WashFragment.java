@@ -136,14 +136,18 @@ public class WashFragment extends Fragment implements AdapterView.OnItemSelected
                             userModel = documentSnapshot.toObject(UserModel.class);
                             if(userModel!=null){
                                 addressModel = userModel.getAddress();
-                                loc = addressModel.getLocation();
-                                add = addressModel.getHouse();
-                                land = addressModel.getLandmark();
+                                if (addressModel!=null) {
+                                    loc = addressModel.getLocation();
+                                    add = addressModel.getHouse();
+                                    land = addressModel.getLandmark();
 
-                                fullAddress = add +", "+ land + ", "+loc;
-                                addressInput.setText(add);
+                                    fullAddress = add +", "+ land + ", "+loc;
+                                    addressInput.setText(add);
+                                }
 
                                 fullName = userModel.getFirstName()+userModel.getLastName();
+                                checkAddress();
+                            }  else {
                                 checkAddress();
                             }
                         }

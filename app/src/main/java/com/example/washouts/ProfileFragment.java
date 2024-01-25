@@ -26,7 +26,7 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ProfileFragment extends Fragment implements PaymentResultListener {
+public class ProfileFragment extends Fragment {
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -50,13 +50,7 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
         feedbackView = view.findViewById(R.id.feedbackview);
         helpView = view.findViewById(R.id.helpview);
         outView = view.findViewById(R.id.logoutview);
-//        pay = view.findViewById(R.id.pay);
-//
-//        pay.setOnClickListener(v -> {
-//            payNow("1");
-//            Intent intent = new Intent(getActivity(),PaymentActivity.class);
-//            getActivity().startActivity(intent);
-//        });
+
 
         feedbackView.setOnClickListener(v -> {
             if (HomeActivity.isAdmin) {
@@ -77,30 +71,6 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
             getActivity().startActivity(intent);
         });
         return view;
-    }
-
-    private void payNow(String amount) {
-        final Activity activity = getActivity();
-        Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_9V30Iow9nxYTdn");
-        checkout.setImage(R.drawable.ic_launcher_background);
-
-        double finalAmount = Float.parseFloat(amount)*100;
-
-        try {
-            JSONObject options = new JSONObject();
-            options.put("name","Sunil");
-            options.put("description","Reference No. #123");
-            options.put("image","https://s3.amazonaws.com./rzp-mobile/images/rzp.png");
-            options.put("theme.color",R.color.main);
-            options.put("currency","INR");
-            options.put("amount",finalAmount+"");
-            options.put("prefill.contact","8828293618");
-
-            checkout.open(activity,options);
-        } catch (JSONException e) {
-            Log.e("Tag","Error",e);
-        }
     }
 
     public void getData(){
@@ -126,13 +96,4 @@ public class ProfileFragment extends Fragment implements PaymentResultListener {
         });
     }
 
-    @Override
-    public void onPaymentSuccess(String s) {
-        Toast.makeText(getActivity(), "Pay S", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onPaymentError(int i, String s) {
-        Toast.makeText(getActivity(), "Pay F", Toast.LENGTH_SHORT).show();
-    }
 }
