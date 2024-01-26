@@ -1,14 +1,16 @@
 package com.example.washouts.models;
 
 public class OrderModel {
-    String userId,orderId,fullName,fullAddress,pickUpDate,pickUpTime,serviceType,noOfGarments,payment,modeOfPayment;
+    String userId,orderId,fullName,fullAddress,pickUpDate,pickUpTime,serviceType,noOfGarments,
+            payment,modeOfPayment,orderStatus;
 
 
     public OrderModel() {
     }
 
     public OrderModel(String userId, String orderId, String fullName, String fullAddress, String pickUpDate,
-                      String pickUpTime, String serviceType, String noOfGarments, String payment, String modeOfPayment) {
+                      String pickUpTime, String serviceType, String noOfGarments,
+                      String payment, String modeOfPayment,String orderStatus) {
         this.userId = userId;
         this.orderId = orderId;
         this.fullName = fullName;
@@ -19,6 +21,7 @@ public class OrderModel {
         this.noOfGarments = noOfGarments;
         this.payment = payment;
         this.modeOfPayment = modeOfPayment;
+        this.orderStatus = orderStatus;
     }
 
     public String getFullName() {
@@ -99,5 +102,13 @@ public class OrderModel {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

@@ -74,6 +74,8 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
         timeTV.setText(time);
         serviceTV.setText(service);
         garmentsTV.setText(garments);
+        calculatePayment();
+
 
         modeOfPayment.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -81,7 +83,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
                 RadioButton radioButton = findViewById(checkedId);
                 switch (radioButton.getText().toString()) {
                     case "Cash On Delivery":
-                        mOPayment = "cod";
+                        mOPayment = "cash";
                         break;
                     case "Online/UPI":
                         mOPayment = "online";
@@ -94,9 +96,8 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
             if(mOPayment.isEmpty()) {
                 Toast.makeText(this, "Please select mode of payment!", Toast.LENGTH_SHORT).show();
             } else {
-                calculatePayment();
                 switch (mOPayment) {
-                    case "cod":
+                    case "cash":
                         placeOrder();
                         break;
                     case "online":
@@ -152,7 +153,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
     }
 
     public void placeOrder() {
-        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,payment,mOPayment);
+        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,payment,mOPayment,"Active");
         FireBase.getUsersOrders().add(orderModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -160,7 +161,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
                     DocumentReference documentReference = task.getResult();
                     orderId = documentReference.getId();
                     orderModel.setOrderId(orderId);
-                    FireBase.getOrderDetails().document(orderId).update("orderId",orderId).addOnCompleteListener(task1 -> {
+                    FireBase.getUsersOrders().document(orderId).update("orderId",orderId).addOnCompleteListener(task1 -> {
                         Toast.makeText(CheckOutActivity.this, "Order Placed On User", Toast.LENGTH_SHORT).show();
                         FireBase.getOrderDetails().add(orderModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override

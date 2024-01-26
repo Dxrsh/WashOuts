@@ -15,13 +15,14 @@
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:textColor="@color/main"/>
+        android:textColor="@color/main"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/addTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address :"
+        android:text="Address : "
         android:layout_below="@+id/confirmOrderTV"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"/>
@@ -40,7 +41,7 @@
         android:layout_below="@id/displayAddTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="On :"/>
+        android:text="On : "/>
     <TextView
         android:id="@+id/displayDateTV"
         android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
         android:layout_below="@id/displayDateTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="At :"/>
+        android:text="At : "/>
     <TextView
         android:id="@+id/displayTimeTV"
         android:layout_width="wrap_content"
@@ -72,7 +73,7 @@
         android:layout_below="@id/displayTimeTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Service :"/>
+        android:text="Service : "/>
     <TextView
         android:id="@+id/displayServiceTV"
         android:layout_width="wrap_content"
@@ -88,7 +89,7 @@
         android:layout_below="@id/displayServiceTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Number Of Garments :"/>
+        android:text="Number Of Garments : "/>
     <TextView
         android:id="@+id/displaygarmentsTV"
         android:layout_width="wrap_content"
@@ -128,7 +129,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/paymentTV"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
 
         <RadioButton
             android:id="@+id/cod"

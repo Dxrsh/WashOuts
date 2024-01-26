@@ -31,4 +31,8 @@ public class FireBase {
     public static CollectionReference getFeedbacks() {
         return FirebaseFirestore.getInstance().collection("feedbacks");
     }
+
+    public static CollectionReference getAllUsers() {
+        return FirebaseFirestore.getInstance().collection("users");
+    }
 }

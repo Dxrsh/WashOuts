@@ -123,7 +123,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="140dp"
+            android:id="@+id/removeOrder"            android:layout_width="140dp"
             android:layout_height="30dp"
             android:layout_below="@id/paymentTV"
             android:layout_alignParentEnd="true"

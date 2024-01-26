@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/addressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address : "/>
+            <TextView
+                android:id="@+id/displayAddTVO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/addressTV"/>
+
+            <TextView
+                android:id="@+id/dateTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="On : "
+                android:layout_below="@id/displayAddTVO"/>
+            <TextView
+                android:id="@+id/displayDateTVO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/dateTV"
+                android:layout_below="@id/displayAddTVO"/>
+
+            <TextView
+                android:id="@+id/timeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="At : "
+                android:layout_below="@id/displayDateTVO"/>
+            <TextView
+                android:id="@+id/displayTimeTVO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/timeTV"
+                android:layout_below="@id/displayDateTVO"/>
+
+            <TextView
+                android:id="@+id/serviceTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service : "
+                android:layout_below="@id/displayTimeTVO"/>
+            <TextView
+                android:id="@+id/displayServiceTVO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/serviceTV"
+                android:layout_below="@id/displayTimeTVO"/>
+
+            <TextView
+                android:id="@+id/garmentsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No of Garments : "
+                android:layout_below="@id/displayServiceTVO"/>
+            <TextView
+                android:id="@+id/displayGarmentsTVO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/garmentsTV"
+                android:layout_below="@id/displayServiceTVO"/>
+
+            <TextView
+                android:id="@+id/paymentTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/displayGarmentsTVO"
+                android:text="Rs."/>
+            <TextView
+                android:id="@+id/modeOfPaymentTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/displayGarmentsTVO"
+                android:layout_toEndOf="@id/paymentTV"
+                android:layout_marginStart="5dp"/>
+
+
+            <RelativeLayout
+                android:id="@+id/completeOrder"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/paymentTV"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corner_blue"
+                android:backgroundTint="@color/main"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Complete Order"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
