@@ -20,11 +20,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CheckOutActivity extends AppCompatActivity implements PaymentResultListener {
 
@@ -178,9 +189,11 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
 
     }
 
+
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(getApplicationContext(), "Payment Successful", Toast.LENGTH_SHORT).show();
+        placeOrder();
     }
 
     @Override

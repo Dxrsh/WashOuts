@@ -13,12 +13,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    String phoneNumber;
+    static String phoneNumber;
     static Boolean isAdmin;
+    UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +52,24 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        getFCMToken();
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String token = task.getResult();
+                FireBase.getCurrentUserDetails().update("fcmToken",token);
+            }
+        });
     }
 
     void getPhoneNumber() {
         FireBase.getCurrentUserDetails().get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot documentSnapshot = task.getResult();
-                UserModel userModel = documentSnapshot.toObject(UserModel.class);
+                userModel = documentSnapshot.toObject(UserModel.class);
                 if (userModel != null) {
                     phoneNumber = userModel.getPhoneNumber();
                     isAdmin = checkIfUserIsAdmin();
@@ -66,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     boolean checkIfUserIsAdmin() {
-        String[] adminNumbers = getResources().getStringArray(R.array.admins);
+        String[] adminNumbers = getResources().getStringArray(R.array.admin);
         for (String adminNumber : adminNumbers) {
             if (adminNumber.equals(phoneNumber)) {
                 return true;
@@ -74,4 +87,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return false;
     }
+
+
 }

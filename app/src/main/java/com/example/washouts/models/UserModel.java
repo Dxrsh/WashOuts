@@ -51,4 +51,5 @@ public class UserModel {
     public void setAddress(AddressModel address) {
         this.address = address;
     }
+
 }
