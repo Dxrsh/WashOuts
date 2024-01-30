@@ -164,7 +164,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
     }
 
     public void placeOrder() {
-        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,payment,mOPayment,"Active");
+        orderModel = new OrderModel(userId,"",fullName,address,date,time,service,garments,payment,mOPayment,"placed");
         FireBase.getUsersOrders().add(orderModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

@@ -1,6 +1,7 @@
 package com.example.washouts;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
@@ -94,8 +95,14 @@ public class OrderFragment extends Fragment {
             TextView garments = convertView.findViewById(R.id.displayGarmentsTVO);
             TextView payment = convertView.findViewById(R.id.paymentTV);
             TextView mPayment = convertView.findViewById(R.id.modeOfPaymentTV);
-            RelativeLayout relativeLayout = convertView.findViewById(R.id.circle);
-            TextView orderStatus = convertView.findViewById(R.id.orderStatus);
+            RelativeLayout circlePla = convertView.findViewById(R.id.circlePlaced);
+            RelativeLayout circlePro = convertView.findViewById(R.id.circleProcessing);
+            RelativeLayout circleOFD = convertView.findViewById(R.id.circleOutForDeli);
+            RelativeLayout circleCom = convertView.findViewById(R.id.circleCompleted);
+            TextView orderStatusPla = convertView.findViewById(R.id.orderStatusPlaced);
+            TextView orderStatusPro = convertView.findViewById(R.id.orderStatusProcessing);
+            TextView orderStatusOFD = convertView.findViewById(R.id.orderStatusOutForDeli);
+            TextView orderStatusCom = convertView.findViewById(R.id.orderStatusCompleted);
             RelativeLayout removeOrder = convertView.findViewById(R.id.removeOrder);
 
             OrderModel currentOrderModel = getItem(position);
@@ -108,18 +115,51 @@ public class OrderFragment extends Fragment {
                 garments.setText(currentOrderModel.getNoOfGarments());
                 payment.setText("Rs. "+currentOrderModel.getPayment());
                 mPayment.setText("("+currentOrderModel.getModeOfPayment()+")");
-                orderStatus.setText(currentOrderModel.getOrderStatus());
+
             }
 
-            if (currentOrderModel.getOrderStatus().equals("Active")) {
-                int blueColor = ContextCompat.getColor(getContext(),R.color.main);
-                relativeLayout.getBackground().setColorFilter(blueColor, PorterDuff.Mode.SRC_ATOP);
-            } else if (currentOrderModel.getOrderStatus().equals("Completed")){
-                int greenColor = ContextCompat.getColor(getContext(), com.google.android.libraries.places.R.color.quantum_googgreen);
-                relativeLayout.getBackground().setColorFilter(greenColor, PorterDuff.Mode.SRC_ATOP);
-            } else {
-                int defaultColor = ContextCompat.getColor(getContext(), com.google.android.libraries.places.R.color.places_ui_default_primary_dark);
-                relativeLayout.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+            circlePro.setVisibility(View.GONE);
+            orderStatusPro.setVisibility(View.GONE);
+            circleOFD.setVisibility(View.GONE);
+            orderStatusOFD.setVisibility(View.GONE);
+            circleCom.setVisibility(View.GONE);
+            orderStatusCom.setVisibility(View.GONE);
+
+            int defaultColor = ContextCompat.getColor(getContext(), com.google.android.libraries.places.R.color.places_ui_default_primary_dark);
+            int blueColor = ContextCompat.getColor(getContext(),R.color.main);
+            int greenColor = ContextCompat.getColor(getContext(), com.google.android.libraries.places.R.color.quantum_googgreen);
+
+            if (currentOrderModel.getOrderStatus().equals("placed")) {
+                circlePla.getBackground().setColorFilter(blueColor, PorterDuff.Mode.SRC_ATOP);
+
+            } else if (currentOrderModel.getOrderStatus().equals("processing")){
+                circlePro.setVisibility(View.VISIBLE);
+                orderStatusPro.setVisibility(View.VISIBLE);
+                circlePla.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusPla.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            } else if (currentOrderModel.getOrderStatus().equals("outForDeli")){
+                circlePro.setVisibility(View.VISIBLE);
+                orderStatusPro.setVisibility(View.VISIBLE);
+                circleOFD.setVisibility(View.VISIBLE);
+                orderStatusOFD.setVisibility(View.VISIBLE);
+                circlePla.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusPla.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                circlePro.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusPro.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            } else if (currentOrderModel.getOrderStatus().equals("completed")){
+                circleCom.setVisibility(View.VISIBLE);
+                orderStatusCom.setVisibility(View.VISIBLE);
+                circlePro.setVisibility(View.VISIBLE);
+                orderStatusPro.setVisibility(View.VISIBLE);
+                circleOFD.setVisibility(View.VISIBLE);
+                orderStatusOFD.setVisibility(View.VISIBLE);
+                circlePla.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusPla.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                circlePro.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusPro.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                circleOFD.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
+                orderStatusOFD.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                circleCom.getBackground().setColorFilter(greenColor, PorterDuff.Mode.SRC_ATOP);
             }
 
             removeOrder.setOnClickListener(v -> {

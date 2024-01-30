@@ -87,7 +87,10 @@ public class AllOrderFragment extends Fragment {
             TextView garments = convertView.findViewById(R.id.displayGarmentsTVO);
             TextView payment = convertView.findViewById(R.id.paymentTV);
             TextView mPayment = convertView.findViewById(R.id.modeOfPaymentTV);
-            RelativeLayout completeOrder = convertView.findViewById(R.id.completeOrder);
+            TextView orderStatus = convertView.findViewById(R.id.orderStatusTV);
+            RelativeLayout orderPro = convertView.findViewById(R.id.orderProcessing);
+            RelativeLayout orderOFD = convertView.findViewById(R.id.orderOutForDeli);
+            RelativeLayout orderCom = convertView.findViewById(R.id.orderCompleted);
 
             OrderModel currentOrderModel = getItem(position);
 
@@ -99,14 +102,45 @@ public class AllOrderFragment extends Fragment {
                 garments.setText(currentOrderModel.getNoOfGarments());
                 payment.setText("Rs. "+currentOrderModel.getPayment());
                 mPayment.setText("("+currentOrderModel.getModeOfPayment()+")");
+                orderStatus.setText("Order Status : " + currentOrderModel.getOrderStatus());
             }
 
-            completeOrder.setOnClickListener(v -> {
+            orderPro.setOnClickListener(v -> {
                 FireBase.getAllUsers().document(currentOrderModel.getUserId())
                         .collection("orders").document(currentOrderModel.getOrderId())
-                        .update("orderStatus","Completed")
+                        .update("orderStatus","processing")
                         .addOnCompleteListener(task -> {
-                            Toast.makeText(getContext(), "Completed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Order Processing", Toast.LENGTH_SHORT).show();
+                        });
+                FireBase.getOrderDetails().whereEqualTo("orderId",currentOrderModel.getOrderId())
+                        .get().addOnCompleteListener(task -> {
+                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                FireBase.getOrderDetails().document(documentSnapshot.getId())
+                                        .update("orderStatus","processing");
+                            }
+                        });
+            });
+            orderOFD.setOnClickListener(v -> {
+                FireBase.getAllUsers().document(currentOrderModel.getUserId())
+                        .collection("orders").document(currentOrderModel.getOrderId())
+                        .update("orderStatus","outForDeli")
+                        .addOnCompleteListener(task -> {
+                            Toast.makeText(getContext(), "Order OutForDelivery", Toast.LENGTH_SHORT).show();
+                        });
+                FireBase.getOrderDetails().whereEqualTo("orderId",currentOrderModel.getOrderId())
+                        .get().addOnCompleteListener(task -> {
+                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                FireBase.getOrderDetails().document(documentSnapshot.getId())
+                                        .update("orderStatus","outForDeli");
+                            }
+                        });
+            });
+            orderCom.setOnClickListener(v -> {
+                FireBase.getAllUsers().document(currentOrderModel.getUserId())
+                        .collection("orders").document(currentOrderModel.getOrderId())
+                        .update("orderStatus","completed")
+                        .addOnCompleteListener(task -> {
+                            Toast.makeText(getContext(), "completed", Toast.LENGTH_SHORT).show();
                         });
                 FireBase.getOrderDetails().whereEqualTo("orderId",currentOrderModel.getOrderId())
                         .get().addOnCompleteListener(task -> {
