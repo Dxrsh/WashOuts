@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfirmCompleteOrderActivity"
+    android:background="@drawable/rounded_corner_blac"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/enterOrderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="5"
+        android:hint="Enter Order ID"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"/>
+    <Button
+        android:id="@+id/confirmOrderIdButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enterOrderId"
+        android:layout_centerHorizontal="true"
+        android:text="Confirm"
+        android:backgroundTint="@color/main"/>
+
+</RelativeLayout>

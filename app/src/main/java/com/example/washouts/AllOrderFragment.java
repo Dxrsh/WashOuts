@@ -1,6 +1,7 @@
 package com.example.washouts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -66,7 +67,8 @@ public class AllOrderFragment extends Fragment {
         });
     }
 
-    public static class AdapterClass extends ArrayAdapter<OrderModel> {
+
+    public class AdapterClass extends ArrayAdapter<OrderModel> {
 
         public AdapterClass(@NonNull Context context, List<OrderModel> data) {
             super(context, R.layout.all_list_layout, data);
@@ -136,21 +138,10 @@ public class AllOrderFragment extends Fragment {
                         });
             });
             orderCom.setOnClickListener(v -> {
-                FireBase.getAllUsers().document(currentOrderModel.getUserId())
-                        .collection("orders").document(currentOrderModel.getOrderId())
-                        .update("orderStatus","completed")
-                        .addOnCompleteListener(task -> {
-                            Toast.makeText(getContext(), "completed", Toast.LENGTH_SHORT).show();
-                        });
-                FireBase.getOrderDetails().whereEqualTo("orderId",currentOrderModel.getOrderId())
-                        .get().addOnCompleteListener(task -> {
-                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                                FireBase.getOrderDetails().document(documentSnapshot.getId()).delete()
-                                        .addOnCompleteListener(task1 -> {
-                                            Toast.makeText(getContext(), "Order Removed", Toast.LENGTH_SHORT).show();
-                                        });
-                            }
-                        });
+                Intent intent = new Intent(getActivity(), ConfirmCompleteOrderActivity.class);
+                intent.putExtra("orderId",currentOrderModel.getOrderId());
+                intent.putExtra("userId",currentOrderModel.getUserId());
+                getActivity().startActivity(intent);
             });
 
             return convertView;

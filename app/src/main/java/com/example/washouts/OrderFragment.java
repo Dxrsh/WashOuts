@@ -95,6 +95,7 @@ public class OrderFragment extends Fragment {
             TextView garments = convertView.findViewById(R.id.displayGarmentsTVO);
             TextView payment = convertView.findViewById(R.id.paymentTV);
             TextView mPayment = convertView.findViewById(R.id.modeOfPaymentTV);
+            TextView orderId = convertView.findViewById(R.id.displayOrderIdTV);
             RelativeLayout circlePla = convertView.findViewById(R.id.circlePlaced);
             RelativeLayout circlePro = convertView.findViewById(R.id.circleProcessing);
             RelativeLayout circleOFD = convertView.findViewById(R.id.circleOutForDeli);
@@ -115,7 +116,7 @@ public class OrderFragment extends Fragment {
                 garments.setText(currentOrderModel.getNoOfGarments());
                 payment.setText("Rs. "+currentOrderModel.getPayment());
                 mPayment.setText("("+currentOrderModel.getModeOfPayment()+")");
-
+                orderId.setText(currentOrderModel.getOrderId().substring(0,5));
             }
 
             circlePro.setVisibility(View.GONE);
@@ -147,18 +148,10 @@ public class OrderFragment extends Fragment {
                 circlePro.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
                 orderStatusPro.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             } else if (currentOrderModel.getOrderStatus().equals("completed")){
+                circlePla.setVisibility(View.GONE);
+                orderStatusPla.setVisibility(View.GONE);
                 circleCom.setVisibility(View.VISIBLE);
                 orderStatusCom.setVisibility(View.VISIBLE);
-                circlePro.setVisibility(View.VISIBLE);
-                orderStatusPro.setVisibility(View.VISIBLE);
-                circleOFD.setVisibility(View.VISIBLE);
-                orderStatusOFD.setVisibility(View.VISIBLE);
-                circlePla.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
-                orderStatusPla.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                circlePro.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
-                orderStatusPro.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                circleOFD.getBackground().setColorFilter(defaultColor, PorterDuff.Mode.SRC_ATOP);
-                orderStatusOFD.setPaintFlags(orderStatusPla.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 circleCom.getBackground().setColorFilter(greenColor, PorterDuff.Mode.SRC_ATOP);
             }
 
