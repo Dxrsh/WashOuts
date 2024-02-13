@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.hbb20.CountryCodePicker;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText phoneNumber;
+    TextInputEditText phoneNumber;
     Button next;
     CountryCodePicker countryCodePicker;
     @Override

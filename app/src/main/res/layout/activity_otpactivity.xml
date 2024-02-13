@@ -7,6 +7,13 @@
     tools:context=".OTPActivity"
     tools:ignore="HardcodedText">
 
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/laundry1"
+        android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -15,18 +22,26 @@
         android:textColor="@color/main"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+        android:layout_below="@id/image1"
+        android:layout_marginTop="50dp"/>
 
-    <EditText
-        android:id="@+id/otpInput"
-        android:layout_width="244dp"
-        android:layout_height="64dp"
-        android:ems="10"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="OTP"
-        android:inputType="number"
         android:layout_below="@id/phone"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otpInput"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/verifyBtn"

@@ -7,17 +7,12 @@
     tools:context=".LoginActivity"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Your Phone Number :"
-        android:textColor="@color/main"
-        android:textSize="24sp"
-        android:layout_below="@id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
-
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/laundry1"
+        android:layout_marginTop="20dp"/>
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/countryCode1"
@@ -26,21 +21,27 @@
         app:ccpDialog_textColor="#706A6A"
         app:ccp_showFlag="false"
         app:ccp_showNameCode="false"
-        android:layout_below="@id/textView7"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="60dp"/>
 
-    <EditText
-        android:id="@+id/enteredNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Mobile Number"
-        android:inputType="phone"
-        android:layout_below="@id/textView7"
-        android:layout_marginTop="30dp"
-        android:layout_toEndOf="@id/countryCode1"
-        tools:ignore="Autofill" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Mobile Number"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@id/countryCode1">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enteredNumber"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="phone"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/nextbtn1"
@@ -59,6 +60,7 @@
         android:text="Welcome!"
         android:textColor="@color/main"
         android:textSize="60sp"
+        android:layout_below="@id/image1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="30dp"/>
 </RelativeLayout>

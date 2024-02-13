@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +26,7 @@ public class OTPActivity extends AppCompatActivity {
 
     String phoneNumber;
     TextView phone;
-    EditText otpInput;
+    TextInputEditText otpInput;
     Button verifyBtn;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     String verificationCode;
