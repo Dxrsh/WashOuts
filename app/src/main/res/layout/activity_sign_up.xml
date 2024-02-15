@@ -7,47 +7,47 @@
     tools:context=".SignUpActivity"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="152dp"
-        android:layout_height="48dp"
-        android:text="First Name:"
-        android:textColor="@color/main"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/laundry3"
+        android:layout_marginTop="20dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
         android:layout_below="@id/textView4"
+        android:layout_marginTop="42dp"
+        android:layout_marginStart="30dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstName"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:layout_below="@id/filledTextField"
         android:layout_marginTop="50dp"
-        android:layout_marginStart="30dp"/>
+        android:layout_marginStart="30dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastName"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/firstName"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="firstname"
-        android:inputType="text"
-        android:layout_below="@id/textView2"
-        android:layout_marginStart="30dp"/>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="141dp"
-        android:layout_height="48dp"
-        android:text="Last Name:"
-        android:textColor="@color/main"
-        android:textSize="24sp"
-        android:layout_below="@id/firstName"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="30dp"/>
-
-    <EditText
-        android:id="@+id/lastName"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="lastname"
-        android:inputType="text"
-        android:layout_below="@id/textView3"
-        android:layout_marginStart="30dp"/>
 
     <Button
         android:id="@+id/nextbtn"
@@ -67,5 +67,5 @@
         android:textColor="@color/main"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+        android:layout_below="@id/image1"/>
 </RelativeLayout>

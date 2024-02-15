@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity {
 
     String phoneNum,userId;
-    EditText fName,lName;
+    TextInputEditText fName,lName;
     Button next;
     UserModel userModel;
     @Override
