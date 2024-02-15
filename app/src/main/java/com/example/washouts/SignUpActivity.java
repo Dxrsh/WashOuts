@@ -6,72 +6,75 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.UserModel;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    String phoneNum,userId;
-    TextInputEditText fName,lName;
-    Button next;
-    UserModel userModel;
+    private String phoneNum;
+    private TextInputEditText fName, lName;
+    private Button next;
+    private UserModel userModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        userId = FireBase.getCurrentUserId();
+        // Initialize UI elements
         fName = findViewById(R.id.firstName);
         lName = findViewById(R.id.lastName);
-        next=findViewById(R.id.nextbtn);
+        next = findViewById(R.id.nextbtn);
 
+        // Get phone number from the intent
         phoneNum = getIntent().getExtras().getString("phone");
 
+        // Set onClickListener for the "Next" button
         next.setOnClickListener(view -> {
-            if(fName.getText().toString().isEmpty() || fName.getText().toString().length()<3){
-                fName.setError("First Name should be more than 3 char");
+            // Validate first name
+            if (fName.getText().toString().isEmpty() || fName.getText().toString().length() < 3) {
+                fName.setError("First Name should be more than 3 characters");
                 return;
             }
-            else if(lName.getText().toString().isEmpty() || lName.getText().toString().length()<3){
-                lName.setError("Last Name should be more then 3 char");
+            // Validate last name
+            else if (lName.getText().toString().isEmpty() || lName.getText().toString().length() < 3) {
+                lName.setError("Last Name should be more than 3 characters");
                 return;
             }
 
+            // Extract and trim first name and last name
             String firstName = fName.getText().toString().trim();
             String lastName = lName.getText().toString().trim();
 
-            insertData(firstName,lastName,phoneNum);
+            // Insert user data into Firebase
+            insertData(firstName, lastName, phoneNum);
         });
     }
 
+    // Method to insert user data into Firebase
     private void insertData(String firstName, String lastName, String phoneNum) {
-        userModel = new UserModel(firstName,lastName,phoneNum);
+        userModel = new UserModel(firstName, lastName, phoneNum);
         FireBase.getCurrentUserDetails().set(userModel)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(SignUpActivity.this, "Inserted Data", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUpActivity.this, "Data Insertion Failed", Toast.LENGTH_SHORT).show();
-                    }
+                .addOnSuccessListener(unused -> {
+                    // Data insertion successful, navigate to HomeActivity
+                    Toast.makeText(SignUpActivity.this, "Inserted Data", Toast.LENGTH_SHORT).show();
+                    navigateToHomeActivity();
+                })
+                .addOnFailureListener(e -> {
+                    // Data insertion failed, show error message
+                    Toast.makeText(SignUpActivity.this, "Data Insertion Failed", Toast.LENGTH_SHORT).show();
                 });
     }
 
+    // Method to navigate to HomeActivity
+    private void navigateToHomeActivity() {
+        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

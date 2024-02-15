@@ -5,35 +5,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.hbb20.CountryCodePicker;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputEditText phoneNumber;
-    Button next;
-    CountryCodePicker countryCodePicker;
+    private TextInputEditText phoneNumberEditText;
+    private Button nextButton;
+    private CountryCodePicker countryCodePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        phoneNumber = findViewById(R.id.enteredNumber);
-        next = findViewById(R.id.nextbtn1);
+        // Initialize UI elements
+        phoneNumberEditText = findViewById(R.id.enteredNumber);
+        nextButton = findViewById(R.id.nextbtn1);
         countryCodePicker = findViewById(R.id.countryCode1);
-        countryCodePicker.registerCarrierNumberEditText(phoneNumber);
+        countryCodePicker.registerCarrierNumberEditText(phoneNumberEditText);
 
-        next.setOnClickListener(view -> {
-            if(!countryCodePicker.isValidFullNumber()){
-                phoneNumber.setError("Valid Phone Number is Required");
-            }else {
+        // Set onClickListener for the "Next" button
+        nextButton.setOnClickListener(view -> {
+            // Check if the entered phone number is valid
+            if (!countryCodePicker.isValidFullNumber()) {
+                // Display an error message if the phone number is not valid
+                phoneNumberEditText.setError("Valid Phone Number is Required");
+            } else {
+                // Retrieve the full phone number with the country code
                 String phone = countryCodePicker.getFullNumberWithPlus();
-                Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
-                intent.putExtra("phone",phone);
-                startActivity(intent);
+
+                // Proceed to OTPActivity with the phone number as an extra
+                navigateToOTPActivity(phone);
             }
         });
+    }
+
+    // Method to navigate to OTPActivity with the provided phone number
+    private void navigateToOTPActivity(String phone) {
+        Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
+        intent.putExtra("phone", phone);
+        startActivity(intent);
     }
 }
