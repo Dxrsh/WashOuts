@@ -11,23 +11,20 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class OTPActivity extends AppCompatActivity {
 
     private String phoneNumber;
-    private TextView phoneTextView;
     private TextInputEditText otpInput;
-    private Button verifyBtn;
-    private FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    private final FirebaseAuth fAuth = FirebaseAuth.getInstance();
     private String verificationCode;
-    private long timeoutSeconds = 60L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +33,11 @@ public class OTPActivity extends AppCompatActivity {
 
         // Initialize UI elements
         otpInput = findViewById(R.id.otpInput);
-        verifyBtn = findViewById(R.id.verifyBtn);
-        phoneTextView = findViewById(R.id.phone);
+        Button verifyBtn = findViewById(R.id.verifyBtn);
+        TextView phoneTextView = findViewById(R.id.phone);
 
         // Get phone number from intent
-        phoneNumber = getIntent().getExtras().getString("phone");
+        phoneNumber = Objects.requireNonNull(getIntent().getExtras()).getString("phone");
         phoneTextView.setText(phoneNumber);
 
         // Display phone number in a Toast (You might want to remove this for production)
@@ -51,7 +48,7 @@ public class OTPActivity extends AppCompatActivity {
 
         // Set onClickListener for the "Verify" button
         verifyBtn.setOnClickListener(view -> {
-            String enteredOtp = otpInput.getText().toString();
+            String enteredOtp = Objects.requireNonNull(otpInput.getText()).toString();
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, enteredOtp);
             signIn(credential);
         });
@@ -59,6 +56,7 @@ public class OTPActivity extends AppCompatActivity {
 
     // Method to send OTP to the provided phone number
     private void sendOtp(String phoneNumber) {
+        long timeoutSeconds = 60L;
         PhoneAuthOptions.Builder builder =
                 PhoneAuthOptions.newBuilder(fAuth)
                         .setPhoneNumber(phoneNumber)

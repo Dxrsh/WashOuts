@@ -12,6 +12,7 @@
         android:src="@drawable/profile"
         android:layout_margin="30dp"/>
 
+
     <TextView
         android:id="@+id/fullname"
         android:layout_width="wrap_content"
@@ -28,7 +29,16 @@
         android:layout_toRightOf="@id/imageView3"
         android:layout_marginTop="2dp"/>
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/linear"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/divider"/>
+
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="613dp"
         android:orientation="vertical"

@@ -11,7 +11,6 @@ import com.hbb20.CountryCodePicker;
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText phoneNumberEditText;
-    private Button nextButton;
     private CountryCodePicker countryCodePicker;
 
     @Override
@@ -21,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initialize UI elements
         phoneNumberEditText = findViewById(R.id.enteredNumber);
-        nextButton = findViewById(R.id.nextbtn1);
+        Button nextButton = findViewById(R.id.nextbtn1);
         countryCodePicker = findViewById(R.id.countryCode1);
         countryCodePicker.registerCarrierNumberEditText(phoneNumberEditText);
 

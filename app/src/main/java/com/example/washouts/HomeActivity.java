@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.UserModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -21,48 +21,36 @@ public class HomeActivity extends AppCompatActivity {
     static String phoneNumber;
     static Boolean isAdmin;
     UserModel userModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getPhoneNumber();
-
+        // Initialize UI elements
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.wash_menu);
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new WashFragment()).commit();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new WashFragment()).commit();
-
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.profile_menu){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new ProfileFragment()).commit();
+        // Set bottom navigation item selection listener
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.profile_menu) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new ProfileFragment()).commit();
+            } else if (item.getItemId() == R.id.order_menu) {
+                if (isAdmin) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new AllOrderFragment()).commit();
+                } else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new OrderFragment()).commit();
                 }
-                if(item.getItemId() == R.id.order_menu){
-                    if (isAdmin) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new AllOrderFragment()).commit();
-                    } else {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new OrderFragment()).commit();
-                    }
-                }
-                if(item.getItemId() == R.id.wash_menu){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new WashFragment()).commit();
-                }
-                return true;
+            } else if (item.getItemId() == R.id.wash_menu) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new WashFragment()).commit();
             }
+            return true;
         });
 
-        getFCMToken();
-    }
 
-    private void getFCMToken() {
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                String token = task.getResult();
-                FireBase.getCurrentUserDetails().update("fcmToken",token);
-            }
-        });
+        // Get user phone number and check if user is an admin
+        getPhoneNumber();
     }
 
     void getPhoneNumber() {
@@ -87,6 +75,4 @@ public class HomeActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
 }

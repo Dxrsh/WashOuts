@@ -14,12 +14,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private String phoneNum;
     private TextInputEditText fName, lName;
-    private Button next;
-    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,10 @@ public class SignUpActivity extends AppCompatActivity {
         // Initialize UI elements
         fName = findViewById(R.id.firstName);
         lName = findViewById(R.id.lastName);
-        next = findViewById(R.id.nextbtn);
+        Button next = findViewById(R.id.nextbtn);
 
         // Get phone number from the intent
-        phoneNum = getIntent().getExtras().getString("phone");
+        phoneNum = Objects.requireNonNull(getIntent().getExtras()).getString("phone");
 
         // Set onClickListener for the "Next" button
         next.setOnClickListener(view -> {
@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Method to insert user data into Firebase
     private void insertData(String firstName, String lastName, String phoneNum) {
-        userModel = new UserModel(firstName, lastName, phoneNum);
+        UserModel userModel = new UserModel(firstName, lastName, phoneNum);
         FireBase.getCurrentUserDetails().set(userModel)
                 .addOnSuccessListener(unused -> {
                     // Data insertion successful, navigate to HomeActivity
