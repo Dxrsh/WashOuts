@@ -20,7 +20,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -179,6 +178,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(CheckOutActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
+                                    sendNotification(orderModel.getFullName());
                                 }
                             }
                         });
@@ -187,6 +187,45 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
             }
         });
 
+    }
+
+    private void sendNotification(String fullName) {
+        JSONObject jsonObject = new JSONObject();
+        JSONObject notificationObj = new JSONObject();
+        try {
+            notificationObj.put("title","New Order");
+            notificationObj.put("body","New Order has been placed by "+fullName);
+
+            jsonObject.put("notification",notificationObj);
+            jsonObject.put("to","/topics/admin");
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        callApi(jsonObject);
+    }
+
+    private void callApi(JSONObject jsonObject) {
+        MediaType JSON = MediaType.get("application/json");
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://fcm.googleapis.com/fcm/send";
+        RequestBody body = RequestBody.create(jsonObject.toString(),JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .header("Authorization","Bearer "+ BuildConfig.notiApiKey)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+            }
+        });
     }
 
 

@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         String[] adminNumbers = getResources().getStringArray(R.array.admin);
         for (String adminNumber : adminNumbers) {
             if (adminNumber.equals(phoneNumber)) {
+                FirebaseMessaging.getInstance().subscribeToTopic("admin");
                 return true;
             }
         }

@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.WashOuts"
         tools:targetApi="31">
+        <service android:name=".firebase.FCM" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".ConfirmCompleteOrderActivity"
             android:exported="false"
@@ -59,7 +65,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB43aMtCgTV8SYntDaTe08Wdgdcv_8PNfg" />
+            android:value="${applicationId}.BuildConfig.mapApiKey"/>
 
         <activity
             android:name="com.razorpay.CheckoutActivity"

@@ -68,7 +68,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         searchView = findViewById(R.id.searchView);
         confirmLocation = findViewById(R.id.confirmButton);
 
-        apiKey = "AIzaSyB43aMtCgTV8SYntDaTe08Wdgdcv_8PNfg";
+        apiKey = BuildConfig.mapApiKey;
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(),apiKey);
         }

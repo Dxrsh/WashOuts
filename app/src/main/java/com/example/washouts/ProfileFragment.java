@@ -68,6 +68,7 @@ public class ProfileFragment extends Fragment {
         });
         outView.setOnClickListener(v -> {
             fAuth.signOut();
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("admin");
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             getActivity().startActivity(intent);
         });
