@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Returns &amp; Refunds"
+            android:fontFamily="@font/cal"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
@@ -24,6 +25,7 @@
             android:id="@+id/helpText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cal"
             android:text="\u2022 Refund will only be applicable if there's any damage to your clothes after the laundry"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
@@ -35,12 +37,14 @@
             android:layout_height="wrap_content"
             android:text="Also if you have Paid Online and Cancelled the Order"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/cal"
             android:layout_marginStart="15dp"
             android:textColor="@color/red"
             android:layout_below="@id/helpText1"/>
         <TextView
             android:id="@+id/helpText3"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/cal"
             android:layout_height="wrap_content"
             android:text="\u2022 You will get your Refund in within 24Hours of the Order"
             android:layout_marginTop="10dp"
@@ -59,12 +63,14 @@
                 android:id="@+id/contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cal"
                 android:text="If Any Query Contact Us At"
                 android:textSize="20sp"
                 android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/mail"
+                android:fontFamily="@font/cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="washouts2024@hotmail.com"

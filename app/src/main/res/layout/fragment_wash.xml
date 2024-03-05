@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Schedule Wash"
         android:textSize="30sp"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
 
@@ -26,6 +27,7 @@
         android:text="Pick Address"
         android:textSize="16sp"
         android:layout_below="@+id/textView8"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"/>
     <TextView
@@ -36,6 +38,7 @@
         android:drawableStart="@drawable/address"
         android:drawableTint="@color/main"
         android:paddingStart="10dp"
+        android:fontFamily="@font/cal"
         android:gravity="center"
         android:background="@drawable/edit_text_background"
         android:layout_below="@+id/textView9"
@@ -47,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pick up Date"
+        android:fontFamily="@font/cal"
         android:textSize="16sp"
         android:layout_below="@+id/mapInput"
         android:layout_marginTop="40dp"
@@ -54,6 +58,7 @@
     <TextView
         android:id="@+id/dateInput"
         android:layout_width="130dp"
+        android:fontFamily="@font/cal"
         android:layout_height="40dp"
         android:drawableStart="@drawable/date"
         android:drawableTint="@color/main"
@@ -71,6 +76,7 @@
         android:layout_height="wrap_content"
         android:text="Pick up Time"
         android:textSize="16sp"
+        android:fontFamily="@font/cal"
         android:layout_below="@+id/mapInput"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
@@ -78,6 +84,7 @@
     <Spinner
         android:id="@+id/timeInput"
         android:layout_width="140dp"
+        android:fontFamily="@font/cal"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/edit_text_background"
@@ -92,6 +99,7 @@
         android:layout_height="wrap_content"
         android:text="Pick Wash Type"
         android:textSize="16sp"
+        android:fontFamily="@font/cal"
         android:layout_below="@+id/dateInput"
         android:layout_marginTop="40dp"
         android:layout_marginStart="27dp"/>
@@ -116,6 +124,7 @@
             android:text="Dry Cleaning &amp; Steam Press"
             android:textSize="11sp"
             android:gravity="center"
+            android:fontFamily="@font/cal"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"/>
@@ -145,6 +154,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/cal"
             android:text="Wash Cleaning &amp; Steam Press"
             android:textSize="11sp"
             android:gravity="center"/>
@@ -173,6 +183,7 @@
             android:layout_height="wrap_content"
             android:text="Steam Press Only"
             android:textSize="11sp"
+            android:fontFamily="@font/cal"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
@@ -186,6 +197,7 @@
         android:text="Select No. of Garments"
         android:textSize="16sp"
         android:layout_below="@+id/dryButton"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="40dp"
         android:layout_marginStart="27dp"/>
     <EditText
@@ -195,6 +207,7 @@
         android:drawableStart="@drawable/number"
         android:paddingStart="10dp"
         android:drawableTint="@color/main"
+        android:fontFamily="@font/cal"
         android:inputType="number"
         android:layout_below="@id/textView13"
         android:layout_centerHorizontal="true"
@@ -209,6 +222,7 @@
         android:layout_below="@id/garmentsInput"
         android:layout_marginTop="40dp"
         android:text="Schedule"
+        android:fontFamily="@font/cal"
         android:backgroundTint="@color/main"
         android:layout_centerHorizontal="true"/>
 

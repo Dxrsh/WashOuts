@@ -41,6 +41,7 @@
         android:background="@drawable/textview_background"
         android:gravity="center"
         android:textAlignment="center"
+        android:fontFamily="@font/cal"
         android:textSize="20sp"
         android:layout_above="@id/confirmButton"
         android:layout_margin="10dp"/>
@@ -51,6 +52,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main"
         android:text="Confirm This Location"
+        android:fontFamily="@font/cal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"/>

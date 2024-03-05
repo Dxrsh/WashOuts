@@ -30,13 +30,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Mobile Number"
+        android:hint=" Enter Mobile Number "
         android:layout_below="@id/textView"
         android:layout_marginTop="42dp"
+        app:boxStrokeColor="@color/main"
         android:layout_toEndOf="@id/countryCode1">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/enteredNumber"
             android:layout_width="250dp"
+            android:fontFamily="@font/cal"
             android:layout_height="50dp"
             android:ems="10"
             android:inputType="phone"/>
@@ -58,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome!"
+        android:fontFamily="@font/cal"
         android:textColor="@color/main"
         android:textSize="60sp"
         android:layout_below="@id/image1"

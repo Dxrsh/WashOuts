@@ -12,26 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HouseNo/StreetNo/Locality"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Landmark (If Any)"
+        android:fontFamily="@font/cal"
         android:layout_below="@id/houseText"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"/>
 
     <EditText
         android:id="@+id/landmarkText"
         android:layout_width="283dp"
         android:layout_height="44dp"
         android:ems="10"
+        android:fontFamily="@font/cal"
         android:inputType="text"
         android:layout_below="@id/textView11"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"/>
 
     <EditText
         android:id="@+id/houseText"
@@ -39,16 +42,19 @@
         android:layout_height="44dp"
         android:ems="10"
         android:gravity="start|top"
+        android:fontFamily="@font/cal"
         android:inputType="textMultiLine"
         android:layout_below="@id/textView10"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"/>
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main"
+        android:fontFamily="@font/cal"
         android:text="Save"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/landmarkText"
         android:layout_centerHorizontal="true"/>
 

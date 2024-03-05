@@ -14,6 +14,7 @@
             android:id="@+id/helpHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cal"
             android:text="How to see your current or past orders?"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
@@ -23,6 +24,7 @@
         <TextView
             android:id="@+id/helpText1"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/cal"
             android:layout_height="wrap_content"
             android:text="\u2022 Click the Orders Icon"
             android:layout_marginTop="10dp"
@@ -41,6 +43,7 @@
             android:id="@+id/helpText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cal"
             android:text="\u2022 See the List of all the Orders, You can remove a Order on clicking the Remove Button"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"

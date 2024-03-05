@@ -8,22 +8,35 @@
     android:background="@drawable/rounded_corner_blac"
     android:gravity="center">
 
-    <EditText
-        android:id="@+id/enterOrderId"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="5"
-        android:hint="Enter Order ID"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"/>
+        android:hint=" Enter Order ID "
+        app:boxStrokeColor="@color/main"
+        android:layout_centerHorizontal="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enterOrderId"
+            android:layout_width="250dp"
+            android:fontFamily="@font/cal"
+            android:layout_height="50dp"
+            android:maxLength="5"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/confirmOrderIdButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enterOrderId"
+        android:fontFamily="@font/cal"
+        android:layout_below="@id/filledTextField"
         android:layout_centerHorizontal="true"
         android:text="Confirm"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/main"/>
 
 </RelativeLayout>

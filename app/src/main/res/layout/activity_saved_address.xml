@@ -11,60 +11,70 @@
         android:id="@+id/houseText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
+        android:layout_marginStart="5dp"
         android:text="HouseNo/StreetNo/Locality:"
         android:layout_marginTop="12dp"
-        android:textSize="18dp"
-        android:paddingLeft="10dp"/>
+        android:textSize="18sp"
+        android:paddingStart="10dp"/>
     <TextView
         android:id="@+id/houseText_saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="12dp"
         android:text=""
-        android:textSize="18dp"
-        android:layout_toRightOf="@id/houseText1"/>
+        android:textSize="18sp"
+        android:layout_toEndOf="@id/houseText1"/>
     <TextView
         android:id="@+id/landmarkText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Landmark:"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="30dp"
-        android:textSize="18dp"
-        android:paddingLeft="10dp"
+        android:textSize="18sp"
+        android:layout_marginStart="5dp"
+        android:paddingStart="10dp"
         android:layout_below="@id/houseText1"/>
     <TextView
         android:id="@+id/landmarkText_saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/cal"
         android:text=""
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:layout_below="@id/houseText_saved"
-        android:layout_toRightOf="@id/landmarkText1"/>
+        android:layout_toEndOf="@id/landmarkText1"/>
     <TextView
         android:id="@+id/gpsText1"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cal"
+        android:layout_marginStart="5dp"
         android:layout_height="wrap_content"
         android:text="GPS Location:"
         android:layout_marginTop="30dp"
-        android:textSize="18dp"
-        android:paddingLeft="10dp"
+        android:textSize="18sp"
+        android:paddingStart="10dp"
         android:layout_below="@id/landmarkText1"/>
     <TextView
         android:id="@+id/gpsText_saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:textSize="18dp"
+        android:fontFamily="@font/cal"
+        android:textSize="18sp"
         android:text=""
         android:layout_below="@id/landmarkText_saved"
-        android:layout_toRightOf="@id/gpsText1"/>
+        android:layout_toEndOf="@id/gpsText1"/>
 
     <TextView
         android:id="@+id/changeAddress"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/cal"
         android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true"
         android:text="Change Address"
@@ -74,10 +84,11 @@
         android:layout_width="66dp"
         android:layout_height="53dp"
         android:backgroundTint="@color/main"
+        android:fontFamily="@font/cal"
         android:layout_marginBottom="15dp"
         android:text="Ok"
-        android:layout_marginRight="50dp"
-        android:layout_alignParentRight="true"
+        android:layout_marginEnd="50dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

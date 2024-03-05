@@ -2,8 +2,13 @@ package com.example.washouts;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -27,9 +32,10 @@ public class LoadActivity extends AppCompatActivity {
         // Get current user phone number from the intent
         phoneNum = Objects.requireNonNull(getIntent().getExtras()).getString("phone");
 
-        // Retrieve user data and proceed accordingly
         getData();
+
     }
+
 
     private void getData() {
         FireBase.getCurrentUserDetails().get()

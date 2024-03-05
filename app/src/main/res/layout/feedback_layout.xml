@@ -12,6 +12,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/cal"
         android:text="Feedback"
         android:textSize="20sp" />
 
@@ -22,6 +23,7 @@
         android:layout_below="@id/feedback"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"

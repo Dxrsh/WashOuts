@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm Order"
+        android:fontFamily="@font/cal"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
@@ -22,16 +23,18 @@
         android:id="@+id/addTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:text="Address : "
         android:layout_below="@+id/confirmOrderTV"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/displayAddTV"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/addTV"
+        android:layout_toEndOf="@id/addTV"
         android:layout_below="@id/confirmOrderTV"/>
 
     <TextView
@@ -39,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/displayAddTV"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:text="On : "/>
@@ -46,14 +50,16 @@
         android:id="@+id/displayDateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/dateTV"
+        android:layout_toEndOf="@id/dateTV"
         android:layout_below="@id/displayAddTV"/>
 
     <TextView
         android:id="@+id/timeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_below="@id/displayDateTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
@@ -63,7 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/timeTV"
+        android:fontFamily="@font/cal"
+        android:layout_toEndOf="@id/timeTV"
         android:layout_below="@id/displayDateTV"/>
 
     <TextView
@@ -73,13 +80,15 @@
         android:layout_below="@id/displayTimeTV"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:fontFamily="@font/cal"
         android:text="Service : "/>
     <TextView
         android:id="@+id/displayServiceTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/typeTV"
+        android:layout_toEndOf="@id/typeTV"
         android:layout_below="@id/displayTimeTV"/>
 
     <TextView
@@ -88,20 +97,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/displayServiceTV"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/cal"
         android:layout_marginStart="10dp"
         android:text="Number Of Garments : "/>
     <TextView
         android:id="@+id/displaygarmentsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/garmentsTV"
+        android:layout_toEndOf="@id/garmentsTV"
         android:layout_below="@id/displayServiceTV"/>
 
     <TextView
         android:id="@+id/amountTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_below="@id/displaygarmentsTV"
         android:layout_centerHorizontal="true"
         android:text="Payable Amount : "
@@ -110,10 +122,11 @@
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
         android:text="Rs."
         android:layout_centerHorizontal="true"
-        android:layout_toRightOf="@id/amountTV"
+        android:layout_toEndOf="@id/amountTV"
         android:layout_below="@id/garmentsTV"/>
 
     <TextView
@@ -121,6 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/amountTV"
+        android:fontFamily="@font/cal"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:text="Select Mode of Payment :" />
@@ -136,13 +150,15 @@
             android:id="@+id/cod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/cal"
+            android:layout_marginStart="10dp"
             android:text="Cash On Delivery"/>
         <RadioButton
             android:id="@+id/online"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/cal"
+            android:layout_marginStart="30dp"
             android:text="Online/UPI" />
     </RadioGroup>
 
@@ -151,6 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main"
+        android:fontFamily="@font/cal"
         android:layout_below="@id/modeOfPayment"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"

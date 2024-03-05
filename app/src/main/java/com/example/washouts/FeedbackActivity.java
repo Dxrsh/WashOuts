@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.UserModel;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public class FeedbackActivity extends AppCompatActivity {
 
-    EditText feedbackText;
+    TextInputEditText feedbackText;
     String feedback;
     Button send;
     UserModel userModel;

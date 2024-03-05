@@ -9,12 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.washouts.firebase.FireBase;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class ConfirmCompleteOrderActivity extends AppCompatActivity {
 
     String orderId,userId;
-    EditText orderIdEntered;
+    TextInputEditText orderIdEntered;
     Button confirmOrderComplete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

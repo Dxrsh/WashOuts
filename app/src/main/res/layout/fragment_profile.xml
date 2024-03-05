@@ -17,6 +17,7 @@
         android:id="@+id/fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cal"
         android:textSize="34sp"
         android:layout_toRightOf="@id/imageView3"
         android:layout_marginTop="30dp"/>
@@ -24,6 +25,7 @@
     <TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cal"
         android:layout_height="wrap_content"
         android:layout_below="@id/fullname"
         android:layout_toRightOf="@id/imageView3"
@@ -50,6 +52,7 @@
             android:layout_height="60dp"
             android:paddingLeft="40dp"
             android:paddingTop="13dp"
+            android:fontFamily="@font/cal"
             android:text="Send Feedback"
             android:textSize="20sp" />
 
@@ -58,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="40dp"
+            android:fontFamily="@font/cal"
             android:paddingTop="13dp"
             android:text="Help Centre"
             android:textSize="20sp" />
@@ -68,6 +72,7 @@
             android:layout_height="60dp"
             android:paddingLeft="40dp"
             android:paddingTop="13dp"
+            android:fontFamily="@font/cal"
             android:text="Log Out"
             android:textSize="20sp" />
 
