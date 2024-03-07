@@ -122,14 +122,14 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
         final Activity activity = this;
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_9V30Iow9nxYTdn");
-        checkout.setImage(R.drawable.ic_launcher_background);
+        checkout.setImage(R.drawable.logo);
 
         double finalAmount = Float.parseFloat(payment)*100;
 
         try {
             JSONObject options = new JSONObject();
             options.put("name",fullName);
-            options.put("image","https://s3.amazonaws.com./rzp-mobile/images/rzp.png");
+            options.put("image",R.drawable.logo);
             options.put("theme.color",R.color.main);
             options.put("currency","INR");
             options.put("amount",finalAmount+"");
