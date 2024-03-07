@@ -145,7 +145,7 @@
                     android:text="Order Processing"
                     android:fontFamily="@font/cal"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/orderOutForDeli"
@@ -169,7 +169,7 @@
                     android:text="Order Out For Delivery"
                     android:fontFamily="@font/cal"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/orderCompleted"
@@ -182,7 +182,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/cal"
                 android:background="@drawable/rounded_corner_blue"
                 android:backgroundTint="@color/main"
                 android:gravity="center">
@@ -192,8 +191,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="Order Completed"
+                    android:fontFamily="@font/cal"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
             </RelativeLayout>
 
         </RelativeLayout>

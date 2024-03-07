@@ -1,25 +1,25 @@
 package com.example.washouts;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.washouts.firebase.FireBase;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_NOTIFICATION_PERMISSION = 100;
+    private static final String NOTIFICATION_PERMISSION = Manifest.permission.POST_NOTIFICATIONS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkNotificationPermission() {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) ==
+        if (ContextCompat.checkSelfPermission(MainActivity.this, NOTIFICATION_PERMISSION) ==
                 PackageManager.PERMISSION_GRANTED) {
             handlerCode();
         } else {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.POST_NOTIFICATIONS},
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{NOTIFICATION_PERMISSION},
                     REQUEST_NOTIFICATION_PERMISSION);
         }
     }
@@ -61,15 +61,18 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 handlerCode();
             } else {
-                Toast.makeText(this, "Please Allow Notification Permission", Toast.LENGTH_SHORT).show();
-                // Check if the user clicked "Don't Allow" and redirect to app settings
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
-                    redirectToAppSettings();
-                } else {
-                    // Keep asking for permission if the user clicks "Don't Allow"
-                    checkNotificationPermission();
-                }
+                handlePermissionDenied();
             }
+        }
+    }
+
+    private void handlePermissionDenied() {
+        Toast.makeText(this, "Please Allow Notification Permission", Toast.LENGTH_SHORT).show();
+
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this, NOTIFICATION_PERMISSION)) {
+            redirectToAppSettings();
+        } else {
+            checkNotificationPermission();
         }
     }
 
@@ -87,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to redirect the user to the app settings
     private void redirectToAppSettings() {
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(Uri.fromParts("package", getPackageName(), null));
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()));
         startActivity(intent);
-        checkNotificationPermission();
     }
 }

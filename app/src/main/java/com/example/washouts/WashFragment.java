@@ -182,6 +182,8 @@ public class WashFragment extends Fragment implements AdapterView.OnItemSelected
                 },
                 year,month,day);
 
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
         datePickerDialog.show();
     }
 

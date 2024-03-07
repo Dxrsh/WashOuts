@@ -179,6 +179,7 @@ public class CheckOutActivity extends AppCompatActivity implements PaymentResult
                                 if (task.isSuccessful()) {
                                     Toast.makeText(CheckOutActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
                                     sendNotification(orderModel.getFullName());
+                                    finish();
                                 }
                             }
                         });

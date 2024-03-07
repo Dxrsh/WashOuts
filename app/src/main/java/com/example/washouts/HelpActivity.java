@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.washouts.help.OrderHelpActivity;
 import com.example.washouts.help.OrderListHelpActivity;
@@ -15,29 +14,31 @@ import com.example.washouts.help.RefundHelpActivity;
 
 public class HelpActivity extends AppCompatActivity {
 
-    LinearLayout orderHelp,orderListHelp,refundHelp;
-    Intent intent;
+    private LinearLayout orderHelp, orderListHelp, refundHelp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        // Initialize views
         orderHelp = findViewById(R.id.orderHelp);
         orderListHelp = findViewById(R.id.orderListHelp);
         refundHelp = findViewById(R.id.refundHelp);
 
-        orderHelp.setOnClickListener(v -> {
-            intent = new Intent(this, OrderHelpActivity.class);
-            startActivity(intent);
-        });
-        orderListHelp.setOnClickListener(v -> {
-            intent = new Intent(this, OrderListHelpActivity.class);
-            startActivity(intent);
-        });
-        refundHelp.setOnClickListener(v -> {
-            intent = new Intent(this, RefundHelpActivity.class);
-            startActivity(intent);
-        });
+        // Set click listeners for help categories
+        setClickListeners();
+    }
 
+    private void setClickListeners() {
+        orderHelp.setOnClickListener(v -> navigateToActivity(OrderHelpActivity.class));
+        orderListHelp.setOnClickListener(v -> navigateToActivity(OrderListHelpActivity.class));
+        refundHelp.setOnClickListener(v -> navigateToActivity(RefundHelpActivity.class));
+    }
+
+    private void navigateToActivity(Class<?> destinationActivity) {
+        // Navigate to the specified help category activity
+        Intent intent = new Intent(this, destinationActivity);
+        startActivity(intent);
     }
 }

@@ -18,10 +18,8 @@
     </string-array>
 
     <string-array name="admin">
-        <item>+918425985864</item>
+<!--        <item>+918425985864</item>-->
         <item>+919999999915</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

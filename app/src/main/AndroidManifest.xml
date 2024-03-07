@@ -72,7 +72,9 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${applicationId}.BuildConfig.mapApiKey"/>
+                    android:value="${applicationId}.BuildConfig.mapApiKey"/>
+        <!--            android:value="AIzaSyB43aMtCgTV8SYntDaTe08Wdgdcv_8PNfg"/>-->
+
 
         <activity
             android:name="com.razorpay.CheckoutActivity"

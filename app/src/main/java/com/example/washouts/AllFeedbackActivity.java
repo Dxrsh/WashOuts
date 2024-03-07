@@ -17,67 +17,90 @@ import android.widget.Toast;
 
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.OrderModel;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class AllFeedbackActivity extends AppCompatActivity {
 
-    ListView listView;
-    ProgressBar progressBar;
+    private ListView listView;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_feedback);
 
+        // Initialize views
         listView = findViewById(R.id.feedbackList);
         progressBar = findViewById(R.id.progressBar);
 
+        // Fetch and display feedbacks
         getFeedbacks();
     }
 
     private void getFeedbacks() {
-        FireBase.getFeedbacks().get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        progressBar.setVisibility(View.GONE);
-                        List<Map<String,Object>> listData = new ArrayList<>();
-                        for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                            Map<String,Object> data = documentSnapshot.getData();
-                            listData.add(data);
-                        }
-                        AdapterClass adapterClass = new AdapterClass(this,listData);
-                        listView.setAdapter(adapterClass);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Error"+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        FireBase.getFeedbacks().get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Hide the progress bar
+                progressBar.setVisibility(View.GONE);
+
+                // Process feedback data and set up the adapter
+                List<Map<String, Object>> listData = processFeedbackData(task);
+                setupListAdapter(listData);
+            } else {
+                // Display an error message if there is an issue with fetching data
+                Toast.makeText(getApplicationContext(), "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    public static class AdapterClass extends ArrayAdapter<Map<String,Object>> {
+    private List<Map<String, Object>> processFeedbackData(@NonNull Task<QuerySnapshot> task) {
+        List<Map<String, Object>> listData = new ArrayList<>();
+        for (DocumentSnapshot documentSnapshot : task.getResult()) {
+            Map<String, Object> data = documentSnapshot.getData();
+            listData.add(data);
+        }
+        return listData;
+    }
 
-        public AdapterClass(@NonNull Context context, List<Map<String,Object>> data) {
+    private void setupListAdapter(List<Map<String, Object>> listData) {
+        // Create and set up the custom adapter
+        AdapterClass adapterClass = new AdapterClass(this, listData);
+        listView.setAdapter(adapterClass);
+    }
+
+    public static class AdapterClass extends ArrayAdapter<Map<String, Object>> {
+
+        public AdapterClass(@NonNull Context context, List<Map<String, Object>> data) {
             super(context, R.layout.feedback_layout, data);
         }
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            if (convertView==null) {
+            // Inflate the layout if the view is not yet created
+            if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(
-                        R.layout.feedback_layout,parent,false);
+                        R.layout.feedback_layout, parent, false);
             }
 
+            // Retrieve views from the layout
             TextView feedback = convertView.findViewById(R.id.feedback);
             TextView name = convertView.findViewById(R.id.feedbackFrom);
 
-            Map<String,Object> currentData = getItem(position);
+            // Get current feedback data
+            Map<String, Object> currentData = getItem(position);
 
-            feedback.setText("\"" + currentData.get("feedback").toString() + "\"");
-            name.setText("-" + currentData.get("firstName").toString() + " " + currentData.get("lastName").toString());
+            // Set text for feedback and name views
+            if (currentData != null) {
+                feedback.setText("\"" + currentData.get("feedback") + "\"");
+                name.setText("-" + currentData.get("firstName") + " " + currentData.get("lastName"));
+            }
 
             return convertView;
         }

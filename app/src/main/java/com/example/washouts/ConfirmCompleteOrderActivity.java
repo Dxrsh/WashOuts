@@ -50,6 +50,8 @@ public class ConfirmCompleteOrderActivity extends AppCompatActivity {
                                         });
                             }
                         });
+            } else {
+                Toast.makeText(this, "Wrong Order ID", Toast.LENGTH_SHORT).show();
             }
         });
     }

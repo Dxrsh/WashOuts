@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
         android:hint=" Enter Feedback "
         app:boxStrokeColor="@color/main"
         android:layout_centerHorizontal="true">
