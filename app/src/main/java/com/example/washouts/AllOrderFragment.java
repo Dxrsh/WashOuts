@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import com.example.washouts.firebase.FireBase;
 import com.example.washouts.models.OrderModel;
+import com.example.washouts.models.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -70,6 +73,7 @@ public class AllOrderFragment extends Fragment {
 
     public class AdapterClass extends ArrayAdapter<OrderModel> {
 
+        String phoneNum;
         public AdapterClass(@NonNull Context context, List<OrderModel> data) {
             super(context, R.layout.all_list_layout, data);
         }
@@ -83,6 +87,7 @@ public class AllOrderFragment extends Fragment {
             }
 
             TextView address = convertView.findViewById(R.id.displayAddTVO);
+            TextView phone = convertView.findViewById(R.id.displayPhoTVO);
             TextView date = convertView.findViewById(R.id.displayDateTVO);
             TextView time = convertView.findViewById(R.id.displayTimeTVO);
             TextView service = convertView.findViewById(R.id.displayServiceTVO);
@@ -95,8 +100,9 @@ public class AllOrderFragment extends Fragment {
             RelativeLayout orderCom = convertView.findViewById(R.id.orderCompleted);
 
             OrderModel currentOrderModel = getItem(position);
-
             if (currentOrderModel!=null) {
+                getPhoneNumber(phone,currentOrderModel.getUserId());
+
                 address.setText(currentOrderModel.getFullAddress());
                 date.setText(currentOrderModel.getPickUpDate());
                 time.setText(currentOrderModel.getPickUpTime());
@@ -145,6 +151,17 @@ public class AllOrderFragment extends Fragment {
             });
 
             return convertView;
+        }
+
+        private void getPhoneNumber(TextView phone, String userId) {
+            FireBase.getAllUsers().document(userId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    UserModel userModel = documentSnapshot.toObject(UserModel.class);
+                    phone.setText(userModel.getPhoneNumber());
+                }
+            });
         }
     }
 }

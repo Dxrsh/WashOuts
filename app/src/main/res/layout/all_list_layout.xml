@@ -32,20 +32,36 @@
                 android:layout_toEndOf="@id/addressTV"/>
 
             <TextView
+                android:id="@+id/phoneTV"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/cal"
+                android:layout_height="wrap_content"
+                android:text="Phone : "
+                android:layout_below="@id/displayAddTVO"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/displayPhoTVO"
+                android:fontFamily="@font/cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/displayAddTVO"
+                android:layout_toEndOf="@id/phoneTV"/>
+
+            <TextView
                 android:id="@+id/dateTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="On : "
                 android:fontFamily="@font/cal"
                 android:textStyle="bold"
-                android:layout_below="@id/displayAddTVO"/>
+                android:layout_below="@id/displayPhoTVO"/>
             <TextView
                 android:id="@+id/displayDateTVO"
                 android:fontFamily="@font/cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/dateTV"
-                android:layout_below="@id/displayAddTVO"/>
+                android:layout_below="@id/displayPhoTVO"/>
 
             <TextView
                 android:id="@+id/timeTV"
